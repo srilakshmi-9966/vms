@@ -1,0 +1,161 @@
+<div class="container mt-3 ">
+    <div class="mt-3">
+        <h3>User Management</h3>
+        <div class="d-flex justify-content-between pt-4">
+            <div class="me-auto">
+                <div class="p-1 bg-light shadow-sm mb-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button id="button-addon2" type="submit" class="btn btn-link text-secondary"><i
+                                    class="fa fa-search"></i></button>
+                        </div>
+                        <input class="form-control me-2 bg-light border-0" type="search"
+                            placeholder="Search by name or number" aria-label="Search" style="width:15rem">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <select class="form-select p-2" aria-label="Default select example ">
+                    <option value="1">All</option>
+                    <option value="2">Expired in a week</option>
+                    <option value="3">Expired</option>
+                </select>
+            </div>
+            <div class="mx-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bulkModal">
+                    Bulk Upload
+                </button>
+
+                <div class="modal fade" id="bulkModal" tabindex="-1" aria-labelledby="bulkModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="bulkModalLabel">Bulk Upload</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                <button type="button" class="btn btn-primary">Next</button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <button (click)="clickAddResto()" class="btn btn-primary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add
+                    Employee</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email ID</th>
+                <th scope="col">Mobile No.</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Action</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of allRestoData">
+                <td>{{data.id}}</td>
+                <td>{{data.firstName}}</td>
+                <td>{{data.lastName}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.mobile}}</td>
+                <td>{{data.salary}}</td>
+                <td>
+                    <button class="btn btn-success" (click)="onEditResto(data)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Edit</button>&nbsp;
+                    <button class=" btn btn-danger" (click)="deleteRest(data)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Person Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formValue">
+                        <div class="row">
+                            <div class="col-auto mb-3">
+                                <label for="exampleInputEmail1" class="form-label">First Name</label>
+                                <input type="text" class="form-control" formControlName="firstName" minlength="5"
+                                    id="exampleInputEmail1">
+                                <span class="text-danger"
+                                    *ngIf="(formValue.get('firstName')?.touched || submitted) && formValue.get('firstName')?.errors?.['required']">
+                                    FirstName is required
+                                </span>
+                                <!-- <span class="text-danger"
+                            *ngIf="(formValue.controls['firstName']?.touched || submitted) && formValue.controls['firstName']?.hasError('minlength')">
+                           Minimum lenght is 5
+                        </span> -->
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" formControlName="lastName"
+                                    id="exampleInputPassword1">
+                                <span class="text-danger"
+                                    *ngIf="(formValue.get('lastName')?.touched || submitted) && formValue.get('lastName')?.errors?.['required']">
+                                    LastName is required
+                                </span>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Email</label>
+                                <!-- <small class="text-danger fs-12 fw-400"
+                                *ngIf="(submitted || formValue.get('email')?.touched)  && (formValue.get('email')?.errors?.['required'])">Email
+                                is Invalid</small>
+
+                                <input [class.is-invalid] = "formValue.get('email').invalid && formValue.get('email').touched"
+                                type="email" class="form-control" formControlName="primaryEmail" />
+                               -->
+                                <!-- <input type="text" class="form-control" formControlName="email"
+                                    id="exampleInputPassword1"> -->
+                             
+                            </div>
+                            <div class="col-auto mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Mobile</label>
+                                <input type="text" class="form-control" formControlName="mobile"
+                                    id="exampleInputPassword1">
+                                <span class="text-danger"
+                                    *ngIf="(formValue.get('mobile')?.touched || submitted) && formValue.get('mobile')?.errors?.['required']">
+                                    Mobile is required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Salary</label>
+                            <input type="text" class="form-control" formControlName="salary" id="exampleInputPassword1">
+                            <span class="text-danger"
+                                *ngIf="(formValue.get('salary')?.touched || submitted) && formValue.get('salary')?.errors?.['required']">
+                                Salary is required
+                            </span>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="cancel">Close</button>
+                        <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addResto()">Add</button>
+                        <button *ngIf="showBtn" type="button" class="btn btn-primary"
+                            (click)="updateResto()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
