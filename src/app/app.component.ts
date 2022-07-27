@@ -7,10 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  [x: string]: any;
   
-  
-  
+  title='App-Root';
+  today=Date();
+  capString(item:string)
+  {
+    return item.toUpperCase();
+  }
 
   constructor() { }
 
