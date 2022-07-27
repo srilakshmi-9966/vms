@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'vms-angularproject'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('vms-angularproject');
+    expect(app['title']).toEqual('vms-angularproject');
   });
 
   it('should render title', () => {
