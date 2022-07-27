@@ -1,0 +1,21 @@
+.main-box{
+    background-color:#f9a51a;
+}
+.dashboard > p {
+    color: #262626;
+    font-size: 20px;
+    line-height: 50px;
+    padding-top: 7.5px;
+    padding-left: 3.6rem;
+    padding-right: 0.6rem;
+    background-color: #F9A51A;
+}
+
+.export{
+    border-radius: 10px;
+}
+
+.export:hover{
+    border-radius: 10px;
+    background-color: #3b3226;
+}

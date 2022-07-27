@@ -1,0 +1,16 @@
+<p>events works!</p>
+
+ <!-- if condition - #15 vedio--->
+
+ <h1 *ngIf="show; then ifBlock else elseBlock else ifelseif"></h1>
+ <ng-template #ifBlock>
+    <h1>if condition</h1>
+ </ng-template>
+
+ <ng-template #elseBlock>
+    <h1>Else condition</h1>
+ </ng-template>
+
+ <ng-template #ifelseif>
+    <h1>ifelseif condition</h1>
+ </ng-template> 
