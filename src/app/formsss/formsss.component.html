@@ -1,0 +1,25 @@
+<p>formsss works!</p>
+<!-- <form #basicForm1="ngForm" (submit)="getData(basicForm1) "> -->
+
+<form #basicForm="ngForm" (submit)="getData(basicForm.value)">
+<input class="text" ngModel name="name" placeholder="enter name" />
+
+<br/>
+
+<input class="text" ngModel name="email" placeholder="enter email" />
+
+<br/>
+
+<input class="text" ngModel  name="password" placeholder="enter password" />
+
+<br/>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<ul>
+    <li>{{userData.name}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.password}}</li>
+</ul>
