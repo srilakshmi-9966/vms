@@ -1,11 +1,16 @@
+<h1>{{title | titlecase}}</h1>
 <h1>{{title | uppercase}}</h1>
-<h1>{{title | lowercase}}</h1>
-<h1>{{title}}</h1>
-<h1>{{today}}</h1> 
-<h1>{{today | date}}</h1> 
-<h1>{{today | date:'fullDate'}}</h1> 
+<!-- parameter values -->
+<h4>{{title | slice :3:8 }}</h4>  
+
+<!-- two pipes at a time -->
+<h6>{{user | json | uppercase}}</h6>
+<h4>{{003.3400 | number: '1.2-3'}}</h4>
+
+
+<h1>{{100 | currency : 'INR' }}</h1>
+
+<h1>{{100 | currency : 'USD' }}</h1>
 
 
 
-<!-- this process it will take lots of time  -->
-<h3>{{capString(title)}}</h3>
