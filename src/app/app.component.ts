@@ -8,12 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  title='App-Root';
-  today=Date();
-  capString(item:string)
-  {
-    return item.toUpperCase();
-  }
+  title='Angular project';
+
 
   constructor() { }
 
