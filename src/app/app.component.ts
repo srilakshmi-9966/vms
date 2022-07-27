@@ -10,10 +10,6 @@ export class AppComponent {
   
   title='Angular project';
 
-  user =
-    {name:'sri', salary:'1', phone:'9966'};
-
-
 
   constructor() { }
 
